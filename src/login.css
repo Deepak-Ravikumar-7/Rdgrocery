@@ -1,0 +1,96 @@
+.loginpage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./images/g.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+
+.log {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.thead th {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+.user {
+  width: 280px;
+  padding: 18px;
+  margin-bottom: 25px;
+  border-radius: 7px;
+  border: none;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.user:hover {
+  cursor: text;
+}
+
+
+tbody td {
+  padding: 8px;
+}
+
+
+button {
+
+  font-size: 18px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  margin-top: 13px;
+  height: 45px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #388e3c;
+}
+
+.backtohome {
+  width: 140px;
+  background-color: #ff5722;
+}
+
+.login {
+  width: 140px;
+
+}
+
+.backtohome:hover {
+  background-color: #e64a19;
+
+}
+
+.register {
+  color: rgb(38, 177, 177);
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

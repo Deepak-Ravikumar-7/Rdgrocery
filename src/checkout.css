@@ -1,0 +1,48 @@
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.tbl {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  line-height: 30px;
+}
+
+.tbl input,
+.tbl textarea,
+.tbl select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.tbl textarea {
+  height: 100px;
+  resize: none;
+}
+
+.tbl button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.tbl button:hover {
+  background: #0056b3;
+}
