@@ -1,23 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './cart.css';
+import axios from 'axios';
 export default function Wishlist() {
   const [wishItems, setwishItems] = useState([]);
   const navigate = useNavigate();
   const [Nofproducts, setNofproducts] = useState(0);
 
-  useEffect(() => {
-    const storedWishItems = JSON.parse(localStorage.getItem('wishItems')) || [];
-    setwishItems(storedWishItems);
-    setNofproducts(storedWishItems.length);
-  }, []);
 
-  const removeFromWish = (index) => {
-    const updatedWish = wishItems.filter((_, itemIndex) => itemIndex !== index);
-    localStorage.setItem('wishItems', JSON.stringify(updatedWish));
-    setwishItems(updatedWish);
-    setNofproducts(updatedWish.length);
-  };
+  
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+        fetchWishlist(storedUser.email);
+    }
+}, []);
+
+const fetchWishlist = async (userEmail) => {
+    try {
+        const res = await axios.get("http://localhost:3001/getwishlist", {
+            params: { user: userEmail },
+        });
+
+        console.log("Fetched Wishlist from DB:", res.data);
+        setwishItems(res.data);
+    } catch (error) {
+        console.error("Error fetching wishlist:", error);
+    }
+};
+
+const removeFromWish = async (name) => {
+    try {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        if (!storedUser) return;
+
+        await axios.delete("http://localhost:3001/removeFromWishlist", {
+            data: { user: storedUser.email, name },
+        });
+
+        setwishItems(prevItems => prevItems.filter(item => item.name !== name));
+    } catch (error) {
+        console.error("Error removing wishlist item:", error);
+    }
+};
+
 
   const addToCart = (index) => {
     const item = wishItems[index];
@@ -76,7 +102,7 @@ export default function Wishlist() {
               <div>{item.name}</div>
               <div>Price: ${item.price}</div>
 
-              <button onClick={() => removeFromWish(index)} className="remove-from-cart">Remove</button>
+              <button onClick={() => removeFromWish(item.name)} className="remove-from-cart">Remove</button>
               <button onClick={() => addToCart(index)} className="addtocart">Move to Cart</button>
             </div>
           ))

@@ -119,7 +119,6 @@ function Home() {
                 </div>
             </div>
             <hr />
-
             <div className='head' style={{ backgroundImage: `url(/images/${img}.webp)` }}>
                 <br />
                 <br />
@@ -238,7 +237,7 @@ function Home() {
                         </p>
                         <p className='address'>
                             <br />
-
+                    
                         </p>
                         <pre><br />                                       Cities We Serve<br /><br />
                             Coimbatore   |   Tiruppur   |  Chennai   |   Cochin   |   Bengalure   |   Trichiy<br />
